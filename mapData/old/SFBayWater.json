@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+                                                                                
+"features": [
+{ "type": "Feature", "properties": { "Shape_Area": 1257921414550.000000, "Type": "WaterArea" }, "geometry": { "type": "Polygon", "coordinates": [ [ [ -130.714251503129248, 42.02142396563589 ], [ -122.538821971905904, 42.013076938637766 ], [ -120.211340736093376, 34.441663485076639 ], [ -130.717260892083203, 34.456778718177368 ], [ -130.714251503129248, 42.02142396563589 ] ] ] } }
+]
+}

@@ -1,0 +1,1297 @@
+
+/****************************** Reset & Setting *****************************************/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td, figure {
+	margin: 0;
+    padding: 0;
+    outline: 0;
+    border: 0;
+    vertical-align: baseline;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 100%;
+    font-family: inherit;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    display:block;
+}
+
+
+/****************************** Font / Color Theme **************************************/
+
+/* default Font
+font-family: "Open Sans", Arial, Helvetica, sans-serif;
+font-weight: 400;
+font-style: normal;
+color: #404040;
+*/
+
+/* Color Scheme
+Dark Blue: rgb(33, 64, 95)
+Blue: rgb(51, 103, 153)
+Light Blue: rgb(89, 184, 230)
+*/
+
+
+/****************************** Loader **************************************************/
+
+#loaderWrap {
+    height: 100%;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.8);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10000;
+}
+
+#loader_contents {
+    height: 60px;
+    width: 40px;
+    position: relative;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    z-index: 12000;
+}
+
+#loader_contents img {
+    height: 40px;
+    width: 40px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+#loader_text {
+	font-family: "Open Sans", Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	color: rgb(51, 103, 153);
+	position: absolute;
+    top: 45px;
+    left: 0px;
+}
+
+
+/****************************** Header **************************************************/
+
+header {
+	background: rgb(51, 103, 153);
+	height: 10vh;
+	width: 100%;
+	/* Fixed header */
+	position: fixed !important;
+	position: absolute;
+	top: 0;
+	left: 0;
+	-webkit-box-shadow: 0 4px 0 #cccccc;
+	-moz-box-shadow: 0 4px 0 #cccccc;
+	box-shadow: 0 4px 0 #cccccc;
+	box-shadow: 0 1px 8px #333333;
+	-moz-box-shadow: 0 1px 8px #333333; /* Firefox対応 */
+	-webkit-box-shadow: 0 1px 8px #333333; /* Safari、Chrome対応 */
+	z-index: 9999;
+}
+
+#headerContents {
+    font-family: "Open Sans", Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	height: auto;
+	width: 100%;
+	margin-top: 1vh;	
+	z-index: 9999;
+}
+
+img#logo {
+	height: 9vh;
+	width: auto;
+}
+
+#sideBar {
+	float: right;
+	padding: 0px;
+}
+
+a span #desc {
+	color: #ffffff;
+}
+
+
+/****************************** Main Content ********************************************/
+
+section {
+	margin-top: 10vh;
+}
+
+#wrapper {
+	height: auto;
+}
+
+/* Refer to "slidebar.css" for Slidebar styling */
+
+
+/* Map Container */
+
+#mapContents {
+	margin-top: 2vh;
+	margin-bottom: 2vh;
+	position: relative;
+}
+
+#mapContainer {
+    background: "rgb(234, 244, 246)" !important;
+}
+
+/* Layer Control (RTP layer/Basemap Switcher) */
+
+#layerControllerContainer {
+	background-color: rgba(252, 252, 252, 0.7);
+	position: absolute;
+	bottom: 20px;
+	left: 0px;
+	width: auto;
+	padding: 10px;	
+	color: #404040;
+	border-top: 1px solid #404040;
+	border-bottom: 1px solid #404040;	
+}
+
+#LC_outerWrapper {
+	width: 160px;
+	height: auto;
+	margin-top: 5px;
+	float: left;
+}
+
+#openClose_container {
+	float: right;
+	height: auto;
+	width: 15px;
+	margin-left: 0px;
+}
+
+#openClose {
+	background: url('../images/close.svg') no-repeat;
+	background-position: 0px 0px;
+	background-size: 12px 12px;
+}
+
+#RTPlayerControllerTitle, #baseMaplayerControlTitle {
+    font-family: "Open Sans", Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 700;
+	color: #404040;
+	margin-top: 5px;
+	padding-bottom: 5px;
+	border-bottom: 1px dotted #404040;
+	width: 160px;
+}
+    
+#baseMaplayerControlTitle {
+    margin-top: 10px;
+}
+
+.layer-bm-control {
+	margin-top: 0px;
+	height: 36px;
+	font-size: 14px;
+	color: #ffffff;  
+	padding: 0px; 
+    padding-left: 2px;
+	z-index: 1000;
+    background-color: #808080; /* Internet Explorer */
+	background-image: -ms-linear-gradient(bottom, #808080 0%, #999999 100%);
+	background-image: -moz-linear-gradient(bottom, #808080 0%, #999999 100%);
+	background-image: -o-linear-gradient(bottom, #808080 0%, #999999 100%);
+	background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #808080), color-stop(1, #999999)); 
+	background-image: -webkit-linear-gradient(bottom, #808080 0%, #999999 100%); 
+	background-image: linear-gradient(to top, #808080 0%, #999999 100%);
+	border: none;
+}
+
+button.activeInitial:hover { /* activeInitial -> layer is on with dafault */
+    background-color: rgb(89, 184, 230); /* Windows Explorer */
+	background-image: -moz-linear-gradient(bottom, rgba(88,185,230,1) 0%, rgba(159,207,229,1) 100%);
+	background-image: -webkit-gradient(left bottom, left top, color-stop(0%, rgba(88,185,230,1)), color-stop(100%, rgba(159,207,229,1)));
+	background-image: -webkit-linear-gradient(bottom, rgba(88,185,230,1) 0%, rgba(159,207,229,1) 100%);
+	background-image: -o-linear-gradient(bottom, rgba(88,185,230,1) 0%, rgba(159,207,229,1) 100%);
+	background-image: -ms-linear-gradient(bottom, rgba(88,185,230,1) 0%, rgba(159,207,229,1) 100%);
+	background-image: linear-gradient(to top, rgba(88,185,230,1) 0%, rgba(159,207,229,1) 100%);
+}
+    
+button.activeInitial { /* activeInitial -> layer is on with dafault */
+    background-color: rgb(51, 103, 153); /* Windows Explorer */
+	background-image: -moz-linear-gradient(bottom, rgba(51,104,153,1) 0%, rgba(63,130,178,1) 100%);
+	background-image: -webkit-gradient(left bottom, left top, color-stop(0%, rgba(51,104,153,1)), color-stop(100%, rgba(63,130,178,1)));
+	background-image: -webkit-linear-gradient(bottom, rgba(51,104,153,1) 0%, rgba(63,130,178,1) 100%);
+	background-image: -o-linear-gradient(bottom, rgba(51,104,153,1) 0%, rgba(63,130,178,1) 100%);
+	background-image: -ms-linear-gradient(bottom, rgba(51,104,153,1) 0%, rgba(63,130,178,1) 100%);
+	background-image: linear-gradient(to top, rgba(51,104,153,1) 0%, rgba(63,130,178,1) 100%);
+}
+
+span#tg-roadPricing-icon {
+    background: url("../images/controlPanel/roadPricing20px.svg") no-repeat; 
+    height: 20px; 
+    width: 20px; 
+    display: inline; 
+    margin: 6px; 
+    margin-left: 5px;
+    float: left;
+}
+
+button#tg-roadPricing #rp-label {
+    float: left; 
+    margin-top: 6px;
+}
+
+span#tg-highway-icon {
+    background: url("../images/controlPanel/highway20px.svg") no-repeat; 
+    height: 20px;
+    width: 20px;  
+    display: inline; 
+    margin: 6px; 
+    margin-left: 5px;
+    float: left;
+}
+
+button#tg-highway #hw-label {
+    float: left; 
+    margin-top: 6px;
+}
+
+span#tg-transit-icon {
+    background: url("../images/controlPanel/transit20px.svg") no-repeat;    
+    height: 20px; 
+    width: 20px; 
+    display: inline; 
+    margin: 6px; 
+    margin-left: 5px;
+    float: left;
+}
+
+button#tg-transit #tr-label {
+    float: left; 
+    margin-top: 6px;
+}
+
+span#tg-bayAreaFocus-icon {
+    background: url("../images/controlPanel/SFBayFocus20px.svg") no-repeat; 
+    width: 20px; 
+    height: 20px; 
+    display: inline; 
+    margin: 6px; 
+    margin-left: 5px;
+    float: left;
+}
+
+button#tg-bayAreaFocus #baf-label {
+    float: left; 
+    margin-top: 6px;
+}
+
+span#tg-plain-icon {
+    background: url("../images/controlPanel/Plain20px.svg") no-repeat; 
+    height: 20px; 
+    width: 20px; 
+    display: inline; 
+    margin: 6px; 
+    margin-left: 5px;
+    float: left;
+}
+
+button#tg-plain #pl-label {
+    float: left; 
+    margin-top: 6px;
+}
+
+span#tg-street-icon {
+    background: url("../images/controlPanel/street20px.svg") no-repeat; 
+    height: 20px; 
+    width: 20px; 
+    display: inline; 
+    margin: 6px; 
+    margin-left: 5px;
+    float: left;
+}
+
+button#tg-street #st-label {
+    float: left; 
+    margin-top: 6px;
+}
+
+span#tg-satellite-icon {
+    background: url("../images/controlPanel/satellite20px.svg") no-repeat; 
+    height: 20px;    
+    width: 20px;  
+    display: inline; 
+    margin: 6px; 
+    margin-left: 5px;
+    float: left;
+}
+
+button#tg-satellite #sat-label {
+    float: left; 
+    margin-top: 6px;
+}
+
+/* County selection dropdown */
+
+div#dropdown {
+	position: absolute;
+	top: 10px;
+	right: 60px;
+	z-index: 1000;
+}
+
+/* Refer "jquery.selectbox.css" for dropdown styling */
+
+
+/****************************** Data Contents *******************************************/
+
+/* Data Container (Tab Panel) */
+
+/* Tab Panel */
+
+/* Tab Panel general */
+
+#contents1 .tablabel {
+	margin: 0;
+	padding: 0;
+}
+
+#contents1 .tablabel li {
+	float: left;
+	margin: 0;
+	list-style: none;
+	border-left: 4px solid #ffffff;	
+}
+
+/* Tab Panel Labels */
+
+/* Tab Panel1 - Project Description */
+#contents1 .tablabel li a#projectDesc {
+	display: block;
+	padding: 5px; /*tab height*/
+	color: #ffffff;
+	text-decoration: none;
+	text-align: left;
+    background-image: url("../images/tab/document20px.svg");/*Internet Explorer*/
+    background-color: #808080; /*Internet Explorer*/
+	background-image: url("../images/tab/document20px.svg"), -ms-linear-gradient(bottom, #808080 0%, #999999 100%);
+	background-image: url("../images/tab/document20px.svg"), -moz-linear-gradient(bottom, #808080 0%, #999999 100%);
+	background-image: url("../images/tab/document20px.svg"), -o-linear-gradient(bottom, #808080 0%, #999999 100%);
+	background-image: url("../images/tab/document20px.svg"), -webkit-gradient(linear, left bottom, left top, color-stop(0, #808080), color-stop(1, #999999));
+	background-image: url("../images/tab/document20px.svg"), -webkit-linear-gradient(bottom, #808080 0%, #999999 100%);
+	background-image: url("../images/tab/document20px.svg"), linear-gradient(to top, #808080 0%, #999999 100%);
+	background-repeat:  no-repeat, no-repeat;
+	background-position:  10px 5px, top left;
+}
+
+#contents1 .tablabel li a#projectDesc:hover {    
+    background-image: url("../images/tab/document20px.svg");/*Internet Explorer*/
+    background-color: rgb(89, 184, 230);/*Internet Explorer*/
+	background-image: url("../images/tab/document20px.svg"), -moz-linear-gradient(bottom, rgba(88,185,230,1) 0%, rgba(159,207,229,1) 100%);
+	background-image: url("../images/tab/document20px.svg"), -webkit-gradient(left bottom, left top, color-stop(0%, rgba(88,185,230,1)), color-stop(100%, rgba(159,207,229,1)));
+    background-image: url("../images/tab/document20px.svg"), -webkit-linear-gradient(bottom, rgba(88,185,230,1) 0%, rgba(159,207,229,1) 100%);
+    background-image: url("../images/tab/document20px.svg"), -o-linear-gradient(bottom, rgba(88,185,230,1) 0%, rgba(159,207,229,1) 100%);
+    background-image: url("../images/tab/document20px.svg"), -ms-linear-gradient(bottom, rgba(88,185,230,1) 0%, rgba(159,207,229,1) 100%);
+    background-image: url("../images/tab/document20px.svg"), linear-gradient(to top, rgba(88,185,230,1) 0%, rgba(159,207,229,1) 100%);
+	background-repeat:  no-repeat, no-repeat;
+    background-position:  10px 5px, top left;
+}
+
+#contents1 .tablabel li.active a#projectDesc {
+	position: relative;
+	top: 1px;
+	margin-top: -1px;
+	border-top: 2px solid rgb(51, 103, 153);
+	border-bottom: 2px solid #ffffff;
+    color: rgb(51, 103, 153);
+    background-image: url("../images/tab/document20px_active.svg");/*Internet Explorer*/
+	background-color: #ffffff;/*Internet Explorer*/
+	background-image: url("../images/tab/document20px_active.svg"), -ms-linear-gradient(top, #EEEEEE 0%, #FFFFFF 100%);
+	background-image: url("../images/tab/document20px_active.svg"), -moz-linear-gradient(top, #EEEEEE 0%, #FFFFFF 100%);
+	background-image: url("../images/tab/document20px_active.svg"), -o-linear-gradient(top, #EEEEEE 0%, #FFFFFF 100%);
+	background-image: url("../images/tab/document20px_active.svg"), -webkit-gradient(linear, left top, left bottom, color-stop(0, #EEEEEE), color-stop(1, #FFFFFF));
+	background-image: url("../images/tab/document20px_active.svg"), -webkit-linear-gradient(top, #EEEEEE 0%, #FFFFFF 100%);
+	background-image: url("../images/tab/document20px_active.svg"), linear-gradient(to bottom, #EEEEEE 0%, #FFFFFF 100%);
+	background-repeat:  no-repeat, no-repeat;
+	background-position:  10px 5px, top left;
+}
+
+/* Tab Panel2 - Project Information */
+#contents1 .tablabel li a#projectInfo {
+	display: block;
+	padding: 5px; /* tab height */
+	color: #ffffff;
+	text-decoration: none;
+	text-align: left;
+    background-image: url("../images/tab/info20px.svg");/*Internet Explorer*/
+    background-color: #808080; /*Internet Explorer*/
+	background-image: url("../images/tab/info20px.svg"), -ms-linear-gradient(bottom, #808080 0%, #999999 100%);
+	background-image: url("../images/tab/info20px.svg"), -moz-linear-gradient(bottom, #808080 0%, #999999 100%);
+	background-image: url("../images/tab/info20px.svg"), -o-linear-gradient(bottom, #808080 0%, #999999 100%);
+	background-image: url("../images/tab/info20px.svg"), -webkit-gradient(linear, left bottom, left top, color-stop(0, #808080), color-stop(1, #999999));
+	background-image: url("../images/tab/info20px.svg"), -webkit-linear-gradient(bottom, #808080 0%, #999999 100%);
+	background-image: url("../images/tab/info20px.svg"), linear-gradient(to top, #808080 0%, #999999 100%);
+	background-repeat:  no-repeat, no-repeat;
+	background-position:  10px 5px, top left;
+}
+
+#contents1 .tablabel li a#projectInfo:hover {
+    background-image: url("../images/tab/info20px.svg");/*Internet Explorer*/
+    background-color: rgb(89, 184, 230);/*Internet Explorer*/
+	background-image: url("../images/tab/info20px.svg"), -moz-linear-gradient(bottom, rgba(88,185,230,1) 0%, rgba(159,207,229,1) 100%);
+	background-image: url("../images/tab/info20px.svg"), -webkit-gradient(left bottom, left top, color-stop(0%, rgba(88,185,230,1)), color-stop(100%, rgba(159,207,229,1)));
+    background-image: url("../images/tab/info20px.svg"), -webkit-linear-gradient(bottom, rgba(88,185,230,1) 0%, rgba(159,207,229,1) 100%);
+    background-image: url("../images/tab/info20px.svg"), -o-linear-gradient(bottom, rgba(88,185,230,1) 0%, rgba(159,207,229,1) 100%);
+    background-image: url("../images/tab/info20px.svg"), -ms-linear-gradient(bottom, rgba(88,185,230,1) 0%, rgba(159,207,229,1) 100%);
+    background-image: url("../images/tab/info20px.svg"), linear-gradient(to top, rgba(88,185,230,1) 0%, rgba(159,207,229,1) 100%);
+    background-repeat:  no-repeat, no-repeat;
+	background-position:  10px 5px, top left;
+}
+
+#contents1 .tablabel li.active a#projectInfo {
+	position: relative;
+	top: 1px;
+	margin-top: -1px;
+	border-top: 2px solid rgb(51, 103, 153);
+	color: rgb(51, 103, 153);
+	border-bottom: 2px solid #ffffff; 
+    background-image: url("../images/tab/info20px_active.svg");/*Internet Explorer*/
+	background-color: #ffffff;/*Internet Explorer*/
+	background-image: url("../images/tab/info20px_active.svg"), -ms-linear-gradient(top, #EEEEEE 0%, #FFFFFF 100%); 
+	background-image: url("../images/tab/info20px_active.svg"), -moz-linear-gradient(top, #EEEEEE 0%, #FFFFFF 100%); 
+	background-image: url("../images/tab/info20px_active.svg"), -o-linear-gradient(top, #EEEEEE 0%, #FFFFFF 100%);
+	background-image: url("../images/tab/info20px_active.svg"), -webkit-gradient(linear, left top, left bottom, color-stop(0, #EEEEEE), color-stop(1, #FFFFFF));
+    background-image: url("../images/tab/info20px_active.svg"), -webkit-linear-gradient(top, #EEEEEE 0%, #FFFFFF 100%);
+	background-image: url("../images/tab/info20px_active.svg"), linear-gradient(to bottom, #EEEEEE 0%, #FFFFFF 100%);
+    background-repeat:  no-repeat, no-repeat;
+    background-position:  10px 5px, top left;
+}
+
+/* Tab Panel3 - Help / About */
+#contents1 .tablabel li a#help {
+	display: block;
+	padding: 5px; /* tab height */
+	color: #ffffff;
+	text-decoration: none;
+	text-align: left;
+    background-image: url("../images/tab/help20px.svg");/*Internet Explorer*/
+    background-color: #808080; /*Internet Explorer*/
+    background-image: url("../images/tab/help20px.svg"), -ms-linear-gradient(bottom, #808080 0%, #999999 100%);
+	background-image: url("../images/tab/help20px.svg"), -moz-linear-gradient(bottom, #808080 0%, #999999 100%);
+	background-image: url("../images/tab/help20px.svg"), -o-linear-gradient(bottom, #808080 0%, #999999 100%); 
+	background-image: url("../images/tab/help20px.svg"), -webkit-gradient(linear, left bottom, left top, color-stop(0, #808080), color-stop(1, #999999));
+	background-image: url("../images/tab/help20px.svg"), -webkit-linear-gradient(bottom, #808080 0%, #999999 100%);
+	background-image: url("../images/tab/help20px.svg"), linear-gradient(to top, #808080 0%, #999999 100%);
+	background-repeat:  no-repeat, no-repeat;
+	background-position:  10px 5px, top left;
+}
+
+#contents1 .tablabel li a#help:hover {
+    background-image: url("../images/tab/help20px.svg");/*Internet Explorer*/
+    background-color: rgb(89, 184, 230);/*Internet Explorer*/
+	background-image: url("../images/tab/help20px.svg"), -moz-linear-gradient(bottom, rgba(88,185,230,1) 0%, rgba(159,207,229,1) 100%);
+	background-image: url("../images/tab/help20px.svg"), -webkit-gradient(left bottom, left top, color-stop(0%, rgba(88,185,230,1)), color-stop(100%, rgba(159,207,229,1)));
+    background-image: url("../images/tab/help20px.svg"), -webkit-linear-gradient(bottom, rgba(88,185,230,1) 0%, rgba(159,207,229,1) 100%);
+    background-image: url("../images/tab/help20px.svg"), -o-linear-gradient(bottom, rgba(88,185,230,1) 0%, rgba(159,207,229,1) 100%);
+    background-image: url("../images/tab/help20px.svg"), -ms-linear-gradient(bottom, rgba(88,185,230,1) 0%, rgba(159,207,229,1) 100%);
+    background-image: url("../images/tab/help20px.svg"), linear-gradient(to top, rgba(88,185,230,1) 0%, rgba(159,207,229,1) 100%);
+	background-repeat:  no-repeat, no-repeat;
+    background-position:  10px 5px, top left;
+}
+
+#contents1 .tablabel li.active a#help {
+	position: relative;
+	top: 1px;
+	margin-top: -1px;
+	border-top: 2px solid rgb(51, 103, 153);
+	border-bottom: 2px solid #ffffff;
+	color: rgb(51, 103, 153);
+    background-image: url("../images/tab/help20px_active.svg");/*Internet Explorer*/
+	background-color: #ffffff;/*Internet Explorer*/
+	background-image: url("../images/tab/help20px_active.svg"), -ms-linear-gradient(top, #EEEEEE 0%, #FFFFFF 100%);
+	background-image: url("../images/tab/help20px_active.svg"), -moz-linear-gradient(top, #EEEEEE 0%, #FFFFFF 100%);
+	background-image: url("../images/tab/help20px_active.svg"), -o-linear-gradient(top, #EEEEEE 0%, #FFFFFF 100%); 
+	background-image: url("../images/tab/help20px_active.svg"), -webkit-gradient(linear, left top, left bottom, color-stop(0, #EEEEEE), color-stop(1, #FFFFFF)); 
+	background-image: url("../images/tab/help20px_active.svg"), -webkit-linear-gradient(top, #EEEEEE 0%, #FFFFFF 100%);
+	background-image: url("../images/tab/help20px_active.svg"), linear-gradient(to bottom, #EEEEEE 0%, #FFFFFF 100%);
+	background-repeat:  no-repeat, no-repeat;
+	background-position:  10px 5px, top left;
+}
+
+/* Font style on tab panel title */
+#contents1 .tablabel li span {
+	font-family: "Open Sans", Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+}
+
+#contents1 .tablabel li.active a span {
+	font-weight: 700;
+}
+
+#contents1 .tablabel li:first-child a { 
+	margin-left: -4px;
+}
+
+.paneltitleText {
+    padding-right: 5px;
+}
+/* Tab Panel Label ends */
+
+/* Tab Panel Contents */
+#contents1 .panel {
+	padding: 0px;
+	border-bottom: 1px solid rgb(51, 103, 153);
+	border-radius: 0px;
+	position: relative;
+	height: auto;
+	width: 100%;
+}
+
+#contents1 .panel #panel1 {
+	margin-left: 10px;
+    margin-top: 10px;
+    padding-right: 10px;
+	font-family: "Open Sans", Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	color: #404040;
+	overflow-y: auto;
+	height: auto;
+    width: 99%;
+}
+
+#panel1 div#pNameContainer {
+	margin-top: 5px;
+	margin-bottom: 15px;
+	padding-bottom: 5px;
+	border-bottom: 1px dotted #404040;
+	height: 100%;
+}
+
+#panel1 #pName {
+	display: inline;
+	font-family: "Open Sans", Arial, Helvetica, sans-serif;
+	font-style: normal;
+	font-weight: 700;
+	font-size: 18px;
+	color: rgb(51, 103, 153);
+}
+
+#panel1 #pDescription{
+	line-height: 1.6em;
+	margin-bottom: 20px;
+
+}
+
+#panel1 span#prjectWebsiteURL {
+	font-size: 14px;
+	font-weight: 700;
+	color: #666666;
+}
+
+/* Panel2 Project Information */
+.panel #panel2 {
+	margin-left: 10px;
+    margin-top: -5px;
+    padding-right: 10px;
+	font-family: "Open Sans", Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	color: #404040;
+	overflow-y: auto;
+	height: auto;
+    width: 99%;
+}
+
+span.infodetail {
+	height: 25px;
+	width: auto;
+	line-height: 24px;
+	color: rgb(51, 103, 153);
+}
+
+.infotitle {
+	font-weight: 700;
+	color: #797979;
+	width: 270px;
+	clear: both;
+	display: inline-block;
+}
+
+#projectNameInfo {
+	font-weight: 700;
+	color: rgb(51, 103, 153);
+	font-size: 18px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+#costInfoContainer {
+	height: 25px;
+	width: 100%;
+	margin-top: 7px;
+	margin-bottom: 20px;
+	padding-bottom: 3px;
+}
+
+div#costChartContainer {
+	height: 100px;
+	width: 100%;
+	margin-bottom: 20px;
+	overflow-y: hidden;
+}
+
+div#placeholderChart_containerC {
+	height: 100%;
+	position: relative;
+	background: #f5f5f5;
+}
+
+img#placeHolderChartC {
+	position: absolute;
+	top: 50%;
+	left:50%;
+	margin-top: -25px;
+	margin-left: -65px;
+}
+
+div.underline {
+	margin-top: 5px;
+	border-top: 1px dotted #8c8c8c;
+}
+
+#timelineInfoContainer {
+	height: 25px;
+	width: 100%;
+	margin-top: 20px;
+	margin-bottom: 15px;
+	padding-bottom: 20px;
+}
+
+/*#phaseInfo { 
+	margin-left: -130px; //comment out on Dec 25, 2015
+}*/ 
+
+div#timelineChartContainer {
+	height: auto;
+	width: 100%;
+	margin-bottom: 10px;
+}
+
+#timelineChart {
+	height: 200px;
+}
+
+.notice {
+	font-size: 12px;
+	float: right;
+	color: #404040;
+	margin-top: -10px;
+	margin-bottom: 10px;
+	display: block;
+}
+
+/* Panel3 Help / About */
+
+/* accordion panel css */
+
+.panel #panel3 {
+	margin-top: 5px;
+    margin-left: 10px;
+    padding-right: 10px;
+	font-family: "Open Sans", Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	color: #404040;
+	overflow-y: auto;
+	height: auto;
+    width: 99%;
+}
+
+#helpTitle {
+   font-family: "Open Sans", Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 700;
+	color: #404040; 
+    margin-top: 10px;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #404040;
+}
+
+dl {
+	position: relative;
+	overflow: hidden;
+}
+
+dt {
+	position: relative;
+	z-index: 10;
+	margin: 0;
+    margin-top: 5px;
+	padding-bottom: 5px;
+	border-top: 3px solid #ffffff;
+	cursor: pointer;
+    border-bottom: 1px dotted #797979;
+    color: #797979;
+}
+
+dt.hover {
+color: rgb(89, 184, 230);
+}
+
+dt.active {
+/* IE10 Consumer Preview */ 
+color: rgb(51, 103, 153);	
+/* IE10 Consumer Preview */ 
+}
+
+dt.active { 
+	cursor: inherit;
+}
+
+dd {
+	position: relative;
+	z-index: 1;
+	margin: 0;
+	padding: 5px;
+	border-bottom: 1px solid #797979;
+}
+
+.icon {
+	position: relative;
+	top: 1px;
+	display: inline-block;
+	margin-right: 5px;
+	width: 12px;
+	height: 12px;
+	background: url("../images/helpTab/rightarrow.svg") no-repeat 50% 50%;
+}
+
+.helpContents {
+    margin: 0px;
+    margin-left: 12px;
+    font-size: 12px;
+	font-style: normal;
+	font-weight: 400;
+	color: #404040; 
+	line-height: 1.5em;
+}
+
+div.helpContents li {
+	margin-bottom: 5px;
+	margin-left: 10px;
+}
+
+/* Tab Panel Contents end */
+
+/* Data Container (Tab Panel) */
+
+/* Data Container (Pictures) */
+
+#galleryTitle {
+	font-family: "Open Sans", Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 700;
+	color: #404040;
+	width: auto;
+	padding-bottom: 5px;
+	border-bottom: 1px dotted #404040;
+}
+
+#picsContainer {
+	padding: 10px;
+	width: 100%
+	height: 100%;
+	border-top: 1px solid rgb(51, 103, 153);
+	border-bottom: 1px solid rgb(51, 103, 153);
+}
+
+#initialPhotoWindow {
+	height: 90px;
+	width: auto;
+	position: relative;
+	background: #f5f5f5;
+}
+
+#PhotoWindowContent {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: -25px;
+	margin-left: -65px;
+}
+
+#photoGallaryThumb {
+	overflow-y: auto;
+	height: auto;
+}
+
+/****************************** D3 ******************************************************/
+
+/* Cost Chart */
+
+#costChart {
+    height: 100px;
+    width: 100%;
+}
+
+.ccP_x_axis path, .ccP_x_axis line {
+    fill: none;
+    stroke: #666666;
+    shape-rendering: crispEdges;
+}
+ 
+.ccP_x_axis text {
+    font-family: sans-serif;
+    font-size: 11px;
+}
+
+.ccP_y_axis path {
+    fill: none;
+    stroke: none;
+}
+ 
+.loading {
+    font-family: sans-serif;
+    font-size: 15px;
+}
+ 
+.costCircle {
+    fill: #8c8c8c;
+    opacity: 0.2;
+    stroke: 5px;
+}
+
+/* Timeline Chart */
+
+#timelineChart {
+    height: 360px;
+    width: 100%;
+}
+
+.tcP_x_axis path, .tcP_x_axis line {
+    fill: none;
+    stroke: #666666;
+    shape-rendering: crispEdges;
+}
+ 
+.tcP_x_axis text {
+    font-family: sans-serif;
+    font-size: 11px;
+}
+
+.tcP_y_axis path {
+    fill: none;
+    stroke: none;
+}
+
+.selectedRect {
+    fill: rgb(51, 103, 153);
+    opacity: 0.8;
+}
+
+.timelineRect {
+    fill: #8c8c8c;
+    opacity: 0.4;
+}
+
+/* D3 Map */
+
+.en-BART {
+    display: none;
+}
+
+.en-Caltrain {
+    display: none;
+}
+
+.en-ACE {
+    display: none;
+}
+
+.bme-Urbanized {
+    display: none;
+}
+
+.bme-PDA {
+    display: none;
+}
+
+.allLR{
+    display: none;  
+}
+
+svg {
+    shape-rendering: geometricPrecision;
+}
+
+/**************************** Footer ****************************************************/
+
+#footer {
+	height: 3vh;
+	width:100%;
+	position: fixed !important;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	z-index: 9999;
+	background: rgb(51, 103, 153);
+}
+
+/* Tooltips */
+
+#info {
+	background-color: rgba(252, 252, 252, 0.8);
+	border-top:2px solid rgb(51, 103, 153); 
+	border-bottom:1px solid rgb(51, 103, 153); 
+	color:#404040;
+	display:none; 
+	font-size:10px; 
+	padding:10px 15px 5px 15px; 
+	position:absolute; 
+	width:auto; 
+	z-index:9999;
+}
+
+#info p	{
+	font-size:12px; 
+	line-height:1.4; 
+	margin:0 0 10px 0;
+}
+
+
+/****************************** Media Query *********************************************/
+
+/* Style for Smartphones (width 0-765px) */
+
+@media (min-width: 0px) {
+
+  #mapContainer {
+  	height: 60vh;
+  }
+  
+  #desc {
+  	display: none;
+  }
+
+  img#logo {
+  	width:260px;
+  }
+  
+  #sideBar {
+	margin-top: 4vh;
+	padding: 0px;
+	margin-right: -5px;
+  }
+  
+  #dataContainer {
+    height: auto;
+    margin-top: 5vh;
+	margin-bottom: 2vh;
+  }
+  
+  #contents1 {
+    height: auto;
+    max-height: none;
+  }
+  
+  #contents2 {
+    margin-top: 5vh;
+    margin-bottom: 10vh;
+    height: auto;
+    max-height: none;
+  }
+    
+  .panel {
+      height: 100%;
+  }
+
+  #contents1 .panel {
+    max-height: none;
+    height: auto;
+  }
+ 
+  #contents1 .panel #panel1 {
+    height: auto;
+    max-height: none;
+  }
+    
+  #contents1 .panel #panel2 {
+    height: auto;
+    max-height: none;
+    overflow-x: hidden;
+    overflow-y: hidden;
+  }
+
+   #contents1 .panel #panel2:hover {
+    overflow-y: scroll;
+  }
+   
+  #contents1 .panel #panel3 {
+    height: auto;
+    max-height: none;
+  }
+
+  #phaseInfo {
+	margin-left: 0px; /*added on Dec 22nd, 2015*/
+  }
+   
+  /* Tab Panel - hide texts */
+  #contents1 li#tabPanel1 {
+    width: 45px;
+  }
+  
+  #contents1 li#tabPanel2 {
+    width: 45px;
+  }
+
+  #contents1 li#tabPanel3 {
+    width: 45px;
+  }
+
+  #contents1 .tablabel li span.paneltitleText{
+    display:none;
+  }
+
+  /* Projects (Road Pricing / Highway / Transit) Toggle - hide texts */
+  button#tg-roadPricing #rp-label {
+    display: none; 
+  }
+
+  button#tg-highway #hw-label {
+    display: none; 
+  }
+
+  button#tg-transit #tr-label {
+    display: none; 
+  }
+  
+  /* Basemap (Bay Area Focus / Plain / Street / Satellite) Toggle - hide texts */
+  button#tg-bayAreaFocus #baf-label {
+    display: none; 
+  }
+
+  button#tg-plain #pl-label{
+    display: none; 
+  }
+
+  button#tg-street #st-label {
+    display: none; 
+  }
+
+  button#tg-satellite #sat-label {
+    display: none; 
+  }
+  
+  /* Width of project and basemap toggle buttons */
+  .layer-bm-control {
+    width: 36px;
+  }
+
+  body{
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+    
+  span.infodetail {
+    display: block;
+  }
+
+  #layerControllerContainer{
+	height: 196px;
+  }
+
+} /* Media Query width 0-765 ends */
+
+/* Media Query for tablet with portrait */
+@media (min-width: 768px) {
+    
+  #mapContainer {
+    height: 60vh;
+  }
+  
+  #dataContainer {
+    height: auto;
+    margin-top: 2vh;
+	margin-bottom: 2vh;
+    padding: 0;
+    padding-left: 1.6%;
+  }
+    	
+  #contents2 {
+    margin-top: 2vh;
+    margin-bottom: 5vh;
+    max-height: none;
+    height: auto;
+  }
+    
+  img#logo {
+  	width:auto;
+  }
+
+   #desc {
+  	display: none;
+  }
+ 
+  #sideBar {
+	margin-top: 4vh;
+	padding: 0px;
+	margin-right: -2px;
+  }
+
+  #phaseInfo {
+	margin-left: -130px; /*//added on Dec 22nd, 2015*/
+  }
+    
+  /* Tab Panel - show texts on tab panel label */
+  #contents1 li#tabPanel1 {
+      width: auto;
+  }
+
+  #contents1 li#tabPanel2 {
+      width: auto;
+  }
+
+  #contents1 li#tabPanel3 {
+      width: auto;
+  }
+  
+  #contents1 .tablabel li span.paneltitleText {
+    display:inline;
+  }
+  
+  /* Projects (Road Pricing / Highway / Transit) Toggle - show texts */
+  button#tg-roadPricing #rp-label {
+    display: inline; 
+  }
+
+  button#tg-highway #hw-label {
+    display: inline; 
+  }
+
+  button#tg-transit #tr-label {
+    display: inline; 
+  }
+  
+  /* Basemap (Bay Area Focus / Plain / Street / Satellite) Toggle - hide texts */
+  button#tg-bayAreaFocus #baf-label {
+    display: inline; 
+  }
+
+  button#tg-plain #pl-label {
+    display: inline; 
+  }
+
+  button#tg-street #st-label {
+    display: inline; 
+  }
+
+  button#tg-satellite #sat-label {
+    display: inline; 
+  }
+
+  /* Width of project and basemap toggle buttons */
+  .layer-bm-control {
+    width: 160px;
+  }
+
+  span.infodetail {
+    display: inline-block;
+  }
+
+   #layerControllerContainer {
+	height: 387px;
+  }
+
+  #phaseInfo {
+	margin-left: -130px; /*added on Dec 22nd, 2015*/
+  }
+ 
+} /* Media Query width 766-991 ends */
+
+/* Media Query for tablet with landscape and monitors on desktops/laptops */
+
+@media (min-width: 992px) {
+    
+   #mapContainer {
+     height: 83vh;
+   }
+    
+   #dataContainer {     
+     height: 83vh;
+     margin-top: 2vh;
+	 margin-bottom: 2vh;
+   }
+    
+   #sideBar {
+	 margin-top: 4.5vh;
+	 padding: 0px;
+	 margin-right: -5px;
+   }
+
+   #desc {
+    display: inline;
+   }
+    
+   #contents1 {
+     height: auto;
+   }
+    
+   #contents2 {
+     margin-top: 2vh;
+	 height: auto;
+     max-height: 30vh;
+   }
+
+   #contents1 .panel #panel1 {
+     height: auto;
+     max-height: 40vh;
+   }
+    
+   #contents1 .panel #panel2 {
+     height: auto;
+   }
+
+   #contents1 .panel #panel3 {
+     height: auto;
+     max-height: 40vh;
+   }
+   
+   #picsContainer {
+     max-height: none;
+   }
+
+   #phaseInfo {
+	margin-left: -130px; //added on Dec 22nd, 2015
+  }
+
+   body {
+     overflow-y: hidden;
+   } 
+    
+} /* Media Query over 992 width ends */
+
+
+
+
+

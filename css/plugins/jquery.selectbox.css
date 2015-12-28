@@ -1,0 +1,126 @@
+@CHARSET "UTF-8";
+.sbHolder {
+	background-image: -ms-linear-gradient(top, #EEEEEE 0%, #FFFFFF 100%);
+	/* Mozilla Firefox */ 
+	background-image: -moz-linear-gradient(top, #EEEEEE 0%, #FFFFFF 100%);
+	/* Opera */ 
+	background-image: -o-linear-gradient(top, #EEEEEE 0%, #FFFFFF 100%);
+	/* Webkit (Safari/Chrome 10) */ 
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #EEEEEE), color-stop(1, #FFFFFF));
+	/* Webkit (Chrome 11+) */ 
+	background-image: -webkit-linear-gradient(top, #EEEEEE 0%, #FFFFFF 100%);
+	/* W3C Markup, IE10 Release Preview */ 
+	background-image: -linear-gradient(to bottom, #EEEEEE 0%, #FFFFFF 100%);
+	border-bottom: 1px solid #404040;
+	border-top: 1px solid #404040;
+	font-family: "Open Sans", Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: 700;
+	height: 26px;
+	position: relative;
+	width: 160px;
+}
+
+.sbSelector {
+	display: block;
+	height: 26px;
+	left: 0px;
+	line-height: 25px;
+	outline: none;
+	overflow: hidden;
+	position: absolute;
+	text-indent: 10px;
+	top: 0;
+	width: 120px;
+}
+.sbSelector:link, .sbSelector:visited, .sbSelector:hover {
+	font-family: "Open Sans", Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: 700;
+	color: rgb(51, 103, 153);
+	outline: none;
+	text-decoration: none;
+	opacity: 1;
+}
+
+.sbToggle {
+	background: url("../../images/dropdown/select-icons.png") 0 -119px no-repeat;
+	display: block;
+	height: 26px;
+	outline: none;
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 30px;
+}
+
+.sbToggle:hover {
+	background: url("../../images/dropdown/select-icons.png") 0 -170px no-repeat;
+}
+
+.sbToggleOpen {
+	background: url("../../images/dropdown/select-icons.png") 0 -19px no-repeat;
+}
+.sbToggleOpen:hover {
+	background: url("../../images/dropdown/select-icons.png") 0 -69px no-repeat;
+}
+
+
+.sbOptions {
+		background-image: -ms-linear-gradient(top, #EEEEEE 0%, #FFFFFF 100%);
+	/* Mozilla Firefox */ 
+	background-image: -moz-linear-gradient(top, #EEEEEE 0%, #FFFFFF 100%);
+	/* Opera */ 
+	background-image: -o-linear-gradient(top, #EEEEEE 0%, #FFFFFF 100%);
+	/* Webkit (Safari/Chrome 10) */ 
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #EEEEEE), color-stop(1, #FFFFFF));
+	/* Webkit (Chrome 11+) */ 
+	background-image: -webkit-linear-gradient(top, #EEEEEE 0%, #FFFFFF 100%);
+	/* W3C Markup, IE10 Release Preview */ 
+	background-image: -linear-gradient(to bottom, #EEEEEE 0%, #FFFFFF 100%);
+	list-style: none;
+	left: 0px;
+	margin-top: 5px;
+	padding: 0;
+	position: absolute;
+	top: 30px;
+	width: 160px;
+	z-index: 1200;
+	overflow-y: auto;
+	height: auto;
+}
+
+.sbOptions li {
+	padding: 0 7px;
+}
+
+.sbOptions li a {
+	border-bottom: dotted 1px #404040;
+	display: block;
+	outline: none;
+	padding: 7px 0 7px 3px;
+}
+
+.sbOptions a:link, .sbOptions a:visited {
+	color: #404040;
+	text-decoration: none;
+}
+
+.sbOptions a:hover,
+.sbOptions a:focus,
+.sbOptions a.sbFocus {
+	color: rgb(89, 184, 230);
+}
+
+.sbOptions li:last-child a {
+	border: none;
+}
+
+.sbOptions .sbSub {
+	padding-left: 17px;
+}
+
+.sbOptions {
+	border-top: 1px solid #404040;
+	border-bottom: 1px solid #404040;
+}

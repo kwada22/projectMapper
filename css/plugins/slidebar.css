@@ -1,0 +1,139 @@
+/* Toggle Styles */
+
+#menu-toggle {
+	float: right;
+    margin-right: -10px; //added on Dec 25th, 2015
+}
+
+/* wrapper to wrap all contents */
+#wrapper {
+    font-family: "Open Sans", Arial, Helvetica, sans-serif;
+	font-weight: 400;
+	font-style: normal;
+	font-size: 12px;
+	color: #404040;
+    padding-left: 0;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.parent h3 label {
+	font-family: "Open Sans", Arial, Helvetica, sans-serif;
+	font-weight: 700;
+	font-weight: bold;
+	font-style: normal;
+	font-size: 12px;
+	color: #404040;
+}
+
+#wrapper.toggled {
+    padding-right: 300px;
+}
+
+#sidebar-wrapper {   
+    position: fixed;
+    right: 300px;
+    width: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 87vh;
+    margin-right: -300px;
+    border-left: 1px solid rgb(204, 204, 204);
+    z-index: 1000;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    background: -moz-linear-gradient(left, rgb(204,204,202) 0%, rgb(204,204,202) 1%, rgb(230,230,230) 3%, rgb(242,242,242) 7%, rgb(247,247,247) 11%, rgb(255,245,255) 19%, rgb(255,255,255) 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, rgb(204,204,202)), color-stop(1%, rgb(204,204,202)), color-stop(3%, rgb(230,230,230)), color-stop(7%, rgb(242,242,242)), color-stop(11%, rgb(247,247,247)), color-stop(19%, rgb(255,245,255)), color-stop(100%, rgb(255,255,255)));
+    background: -webkit-linear-gradient(left, rgb(204,204,202) 0%, rgb(204,204,202) 1%, rgb(230,230,230) 3%, rgb(242,242,242) 7%, rgb(247,247,247) 11%, rgb(255,245,255) 19%, rgb(255,255,255) 100%);
+    background: -o-linear-gradient(left, rgb(204,204,202) 0%, rgb(204,204,202) 1%, rgb(230,230,230) 3%, rgb(242,242,242) 7%, rgb(247,247,247) 11%, rgb(255,245,255) 19%, rgb(255,255,255) 100%);
+    background: -ms-linear-gradient(left, rgb(204,204,202) 0%, rgb(204,204,202) 1%, rgb(230,230,230) 3%, rgb(242,242,242) 7%, rgb(247,247,247) 11%, rgb(255,245,255) 19%, rgb(255,255,255) 100%);
+    background: linear-gradient(to right, rgb(204,204,202) 0%, rgb(204,204,202) 1%, rgb(230,230,230) 3%, rgb(242,242,242) 7%, rgb(247,247,247) 11%, rgb(255,245,255) 19%, rgb(255,255,255) 100%);
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    width: 300px;
+}
+
+#page-content-wrapper {
+    width: 100%;
+    height: auto;
+    padding: 15px;
+    overflow-y: auto;
+}
+
+#wrapper.toggled #page-content-wrapper {
+    position: absolute;
+    margin-left: -300px;
+}
+
+#sideBarContent {
+    width: auto;
+    height: auto;
+    margin-left: 20px;
+}
+
+.mc-lTitle {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    width: auto;
+}
+
+#mc-lTitle_top {
+    margin-top: 20px;
+    margin-bottom: 0px;
+}
+
+.cb_separation {
+    border-bottom: 1px solid #808080;
+    width: 250px;
+    margin-left: 5px;
+    margin-bottom: 10px;
+}
+
+.eachItem {
+    margin-left: 10px;
+}
+.parent ul {
+    list-style: none;
+    padding-bottom: 0px;
+}
+
+ul li .check-child {
+    list-style: none;
+    margin-left: 18px;
+}
+
+.parent ul li label {
+    font-family: "Open Sans", Arial, Helvetica, sans-serif;
+	font-weight: 400;
+	font-style: normal;
+	font-size: 12px;
+	color: #404040;
+}
+
+.parent {
+    padding-top: 0px;
+    margin-bottom: 5px;
+}
+
+.parent h3 {
+    margin-bottom: 5px;
+}
+    
+.legendObject {
+    margin-bottom: -1px;
+}
+
+.legendObject2 {
+    margin-bottom: -1.2px;
+}
+
+.legendObject3 {
+    margin-bottom: -2px;
+}

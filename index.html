@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Plan Bay Area interactive project map</title>
+
+        <!--CSS starts-->
+
+        <!-- Main -->
+        <link href="css/main.css" rel="stylesheet" />
+        <!-- Bootstrap -->
+        <link href="css/plugins/bootstrap.css" rel="stylesheet" />
+        <!-- Leaflet -->
+        <link href="css/plugins/leaflet.css" rel="stylesheet" />
+        <!-- Font-Awesome -->
+        <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+        <!-- Fonts -->
+        <link href="css/fonts.css" rel="stylesheet" />
+        <!-- slidebar CSS -->
+        <link href="css/plugins/slidebar.css" rel="stylesheet" />
+        <!-- jQuery Select Box -->
+        <link href="css/plugins/jquery.selectbox.css" rel="stylesheet" />
+        <!-- Lightbox -->
+        <link href="css/plugins/lightbox.css" rel="stylesheet" />
+        
+        <!-- CSS ends -->
+
+        <!--javaScript starts-->
+
+        <!-- Leaflet -->
+        <script src="js/lib/leaflet.js" type="text/javascript"></script>
+        <script src="js/lib/leaflet-src.js" type="text/javascript"></script>
+        <!-- ESRI Leaflet Plug-in -->
+        <script src="http://cdn-geoweb.s3.amazonaws.com/esri-leaflet/0.0.1-beta.5/esri-leaflet.js" type="text/javascript"></script>
+        <!-- D3 -->
+        <script src="js/lib/d3.min.js" type="text/javascript"></script>
+        <!-- jQuery -->
+        <script src="js/lib/jquery.js" type="text/javascript"></script>
+        <script src="js/lib/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+        <!-- jQuery Plug-in -->
+        <script src="js/lib/jquery.easing.1.3.js" type="text/javascript"></script>
+        <script src="js/lib/jquery.shuffleLetters.js" type="text/javascript"></script>
+        <script src="js/lib/jquery.tab.js" type="text/javascript"></script>
+        <script src="js/lib/jquery.selectbox-0.2.js" type="text/javascript"></script>
+        <script src="js/lib/jquery.mousewheel-3.0.6.min.js" type="text/javascript"></script>
+        <!-- Lightbox Photo Gallery -->
+        <script src="js/lib/lightbox.js"></script>
+        <!-- Tab / Sidebar / Select Box -->
+        <script type="text/javascript">
+            // Tab
+            $(document).ready(function () {
+                $("#tab").jqueryTab();
+            });
+            // Sidebar
+            $(document).ready(function () {
+                $("#menu-toggle").click(function (e) {
+                    e.preventDefault();
+                    $("#wrapper").toggleClass("toggled");
+                });
+            });
+            //Select Box
+            $(function () {
+                $("#countyselection").selectbox();
+            });     
+        </script>
+
+        <!--javaScript ends-->
+
+    </head>
+
+
+    <body>
+
+        <div id="loaderWrap">
+            <div id="loader_contents">
+                <img src="images/loader.gif" class="image-rsponsive" />
+                <div id="loader_text">loading</div>
+            </div>
+        </div>
+
+        <header class="container-fluid">
+            <div id="headerContents" class="row">
+                <div class="col-xs-6 col-sm-5 col-sm-offset-1 col-md-8 col-md-offset-0 col-lg-8 col-lg-offset-0">
+                    <a href="index.html">
+                        <img id="logo" class="image-rsponsive" src="images/mp_logo2.svg" alt="Plan Bay Area interactive project map" />
+                    </a>
+                </div>
+                <div id="sideBar" class="col-xs-5 col-sm-6 col-sm-pull-1 col-md-4 col-md-pull-0 col-lg-4 col-lg-pull-0">
+                    <a href="#menu-toggle" id="menu-toggle"> <span id="desc">Layer Controls / Legend&nbsp;&nbsp;</span>  <i class="fa fa-list-ul fa-lg"></i>
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <!--Wrap entire content exept header and footer-->
+        <div id="wrapper">
+            
+            <!-- Sidebar content starts -->
+            <div id="sidebar-wrapper">
+                <div id="sideBarContent">
+
+                    <!-- Base Map Options (PDA / Urbanized Area / County Labels) -->
+                    <div class="parent">
+
+                        <h3 class="mc-lTitle" id="mc-lTitle_top"><label for="parent-01"><input type="checkbox" class="check-parent" id="allBasemap"/>&nbsp;&nbsp;Base Map Options</label></h3> 
+                        <div class="cb_separation"></div>
+
+                        <ul>
+                            <li class="eachItem">
+                                <label for="child-01">
+                                    <input type="checkbox" class="check-child" id="child-01" />&nbsp;&nbsp;Urbanized Area&nbsp;&nbsp;
+                                </label>
+                                <!-- SVG filter for Urbanized Area Legend -->
+                                <svg class="legendObject2" width="12" height="12">
+                                    <defs>
+                                        <pattern id="SVGdot" x="10" y="10" width="2" height="2" patternUnits="userSpaceOnUse">
+                                            <circle cx="2" cy="2" r="1" style="stroke: none; fill: rgb(102, 102, 102)" />
+                                        </pattern>
+                                    </defs>
+                                    <rect width="12" height="12" style="stroke: none; fill: url(#SVGdot);" />
+                                </svg>
+                                <!-- SVG filter ends -->
+                            </li>
+                            <li class="eachItem">
+                                <label for="child-02">
+                                    <input type="checkbox" class="check-child" id="child-02" />&nbsp;&nbsp;PDA&nbsp;&nbsp;
+                                </label>
+                                <svg class="legendObject2" width="12" height="12">
+                                    <rect width="20" height="20" fill="rgb(238, 28, 46)" opacity="0.2" />
+                                </svg>
+                            </li>
+                            <li class="eachItem">
+                                <label for="child-add1">
+                                    <input type="checkbox" class="check-child" id="child-add1" checked="checked"/>&nbsp;&nbsp;County Labels&nbsp;&nbsp;
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- parent(1) ends -->
+
+                    <!-- Existing Transportation Network (Bart / Caltrain / Highway&Freeway) -->
+                    <div class="parent">
+                        <h3><label for="parent-02" class="mc-lTitle"><input type="checkbox" class="check-parent" id="allExistingNetwork"/>&nbsp;&nbsp;Existing Transportation Network</label></h3> 
+                        <div class="cb_separation"></div>
+                        <ul>
+                            <li class="eachItem">
+                                <label for="child-03">
+                                    <input type="checkbox" class="check-child" id="child-03" />&nbsp;&nbsp;BART&nbsp;&nbsp;
+                                </label>
+                                <svg class="legendObject" width="40" height="10">
+                                    <path d="M0 5 L40 5 Z" stroke="rgb(29, 82, 126)" stroke-width="5" stroke-linecap="square" stroke-dasharray="10, 8" />
+                                </svg>
+                            </li>
+                            <li class="eachItem">
+                                <label for="child-04">
+                                    <input type="checkbox" class="check-child" id="child-04" />&nbsp;&nbsp;Caltrain&nbsp;&nbsp;
+                                </label>
+                                <svg class="legendObject" width="40" height="10">
+                                    <path d="M0 5 L40 5 Z" stroke="rgb(115, 0, 0)" stroke-width="5" stroke-linecap="square" stroke-dasharray="10, 8" />
+                                </svg>
+                            </li>
+                            <li class="eachItem">
+                                <label for="child-add2">
+                                    <input type="checkbox" class="check-child" id="child-add2" />&nbsp;&nbsp;Light Rail&nbsp;&nbsp;
+                                </label>
+                                <svg class="legendObject" width="40" height="10">
+                                    <path d="M0 5 L40 5 Z" stroke="rgb(39, 108, 88)" stroke-width="5" stroke-linecap="square" stroke-dasharray="10, 8" />
+                                </svg>
+                            </li>
+                            <li class="eachItem">
+                                <label for="child-05">
+                                    <input type="checkbox" class="check-child" id="child-05" checked="checked"/>&nbsp;&nbsp;Highway / Freeway&nbsp;&nbsp;
+                                </label>
+                                <svg class="legendObject" width="40" height="10">
+                                    <path d="M0 6 L40 6 Z" stroke="rgb(153, 153, 153)" stroke-width="4" stroke-linecap="square" />
+                                </svg>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- parent(2) ends -->
+
+                    <!-- Road Pricing Projects (Congestion Pricing / Express Lane) -->
+
+                    <div class="parent">
+                        <h3><label for="parent-03" class="mc-lTitle"><input type="checkbox" class="check-parent" id="allRoadPricingProjects" checked="checked"/>&nbsp;&nbsp;Road Pricing Projects</label></h3> 
+                        <div class="cb_separation"></div>
+                        <ul>
+                            <li class="eachItem">
+                                <label for="child-06">
+                                    <input type="checkbox" class="check-child rp_child" id="child-06" checked="checked" />&nbsp;&nbsp;Congestion Pricing&nbsp;&nbsp;</label>
+
+                                <!-- SVG filter for Road Pricing Legend -->
+                                <svg class="legendObject3" width="12" height="12">
+                                    <defs>
+                                        <pattern id="stripe-pattern" x="6" y="6" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+                                            <line x1="6" y1="0" x2="6" y2="6" style="stroke: rgb(217, 0, 0); stroke-width: 1.5; fill: none;" />
+                                        </pattern>
+                                    </defs>
+                                    <rect width="12" height="12" style="stroke: rgb(217, 0, 0); stroke-width: 1.5; fill: url(#stripe-pattern);" />
+                                </svg>
+                                <!-- SVG filter ends -->
+                            </li>
+
+                            <li class="eachItem">
+                                <label for="child-07">
+                                    <input type="checkbox" class="check-child rp_child" id="child-07" checked="checked" />&nbsp;&nbsp;Express Lane&nbsp;&nbsp;</label>
+                                <svg class="legendObject" width="40" height="10">
+                                    <path d="M0 5 L40 5 Z" stroke="rgb(196, 18, 132)" stroke-width="3" stroke-linecap="square" />
+                                </svg>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- parent(3) ends -->
+
+                    <!-- Highway Projects (Operational Improvement / Widening / HOV Lane / Interchange Improvement) -->
+
+                    <div class="parent">
+                        <h3><label for="parent-04" class="mc-lTitle"><input type="checkbox" class="check-parent mc-lTitle" id="allHighwayProjects" checked="checked"/>&nbsp;&nbsp;Highway Projects</label></h3> 
+                        <div class="cb_separation"></div>
+                        <ul>
+                            <li class="eachItem">
+                                <label for="child-08">
+                                    <input type="checkbox" class="check-child hw_child" id="child-08" checked="checked" />&nbsp;&nbsp;Operational Improvement&nbsp;&nbsp;
+                                </label>
+                                <svg class="legendObject" width="40" height="10">
+                                    <path d="M0 5 L40 5 Z" stroke="rgb(255,165,0)" stroke-width="3" stroke-linecap="square" />
+                                </svg>
+                            </li>
+                            <li class="eachItem">
+                                <label for="child-09">
+                                    <input type="checkbox" class="check-child hw_child" id="child-09" checked="checked" />&nbsp;&nbsp;Widening&nbsp;&nbsp;
+                                </label>
+                                <svg class="legendObject" width="40" height="10">
+                                    <path d="M0 5 L40 5 Z" stroke="rgb(246, 221, 0)" stroke-width="3" stroke-linecap="square" />
+                                </svg>
+                            </li>
+                            <li class="eachItem">
+                                <label for="child-10">
+                                    <input type="checkbox" class="check-child hw_child" id="child-10" checked="checked" />&nbsp;&nbsp;HOV Lane&nbsp;&nbsp;
+                                </label>
+                                <svg class="legendObject" width="40" height="10">
+                                    <path d="M0 5 L40 5 Z" stroke="rgb(248, 117, 167)" stroke-width="3" stroke-linecap="square" />
+                                </svg>
+                            </li>
+                            <li class="eachItem">
+                                <label for="child-11">
+                                    <input type="checkbox" class="check-child hw_child" id="child-11" checked="checked" />&nbsp;&nbsp;Interchange Improvement&nbsp;&nbsp;
+                                </label>
+                                <svg class="legendObject" width="40" height="10">
+                                    <circle cx="5" cy="5" r="4" stroke="none" fill="rgb(145,50,4)" />
+                                </svg>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- parent(4) ends -->
+
+                    <!-- Transit Projects (BART / Commuter Rail / Light Rail / Bus / Ferry / Other) -->
+                    <div class="parent">
+                        <h3><label for="parent-05" class="mc-lTitle"><input type="checkbox" class="check-parent" id="allTransitProjects" checked="checked"/>&nbsp;&nbsp;Transit Projects</label></h3> 
+                        <div class="cb_separation"></div>
+                        <ul>
+                            <li class="eachItem">
+                                <label for="child-12">
+                                    <input type="checkbox" class="check-child ts_child" id="child-12" checked="checked" />&nbsp;&nbsp;Ferry&nbsp;&nbsp;
+                                </label>
+                                <svg class="legendObject" width="40" height="10">
+                                    <path d="M0 5 L40 5 Z" stroke="rgb(91, 174, 209)" stroke-width="3" stroke-linecap="square" />
+                                </svg>
+                            </li>
+                            <li class="eachItem">
+                                <label for="child-13">
+                                    <input type="checkbox" class="check-child ts_child" id="child-13" checked="checked" />&nbsp;&nbsp;BART&nbsp;&nbsp;
+                                </label>
+                                <svg class="legendObject" width="40" height="10">
+                                    <path d="M0 5 L40 5 Z" stroke="rgb(9, 75, 140)" stroke-width="3" stroke-linecap="square" />
+                                </svg>
+                            </li>
+                            <li class="eachItem">
+                                <label for="child-14">
+                                    <input type="checkbox" class="check-child ts_child" id="child-14" checked="checked" />&nbsp;&nbsp;Bus&nbsp;&nbsp;
+                                </label>
+                                <svg class="legendObject" width="40" height="10">
+                                    <path d="M0 5 L40 5 Z" stroke="rgb(127, 195, 28)" stroke-width="3" stroke-linecap="square" />
+                                </svg>
+                            </li>
+                            <li class="eachItem">
+                                <label for="child-15">
+                                    <input type="checkbox" class="check-child ts_child" id="child-15" checked="checked" />&nbsp;&nbsp;Light Rail&nbsp;&nbsp;
+                                </label>
+                                <svg class="legendObject" width="40" height="10">
+                                    <path d="M0 5 L40 5 Z" stroke="rgb(40, 164, 126)" stroke-width="3" stroke-linecap="square" />
+                                </svg>
+                            </li>
+                            <li class="eachItem">
+                                <label for="child-16">
+                                    <input type="checkbox" class="check-child ts_child" id="child-16" checked="checked" />&nbsp;&nbsp;Commuter Rail&nbsp;&nbsp;
+                                </label>
+                                <svg class="legendObject" width="40" height="10">
+                                    <path d="M0 5 L40 5 Z" stroke="rgb(94, 79, 162)" stroke-width="3" stroke-linecap="square" />
+                                </svg>
+                            </li>
+                            <li class="eachItem">
+                                <label for="child-17">
+                                    <input type="checkbox" class="check-child ts_child" id="child-17" checked="checked" />&nbsp;&nbsp;Other&nbsp;&nbsp;</label>
+                                <svg class="legendObject" width="10" height="10">
+                                    <circle cx="5" cy="5" r="4" stroke="none" fill="rgb(60, 200, 200)" />
+                                </svg><span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+                                <svg class="legendObject" width="40" height="10">
+                                    <path d="M0 5 L40 5 Z" stroke="rgb(60, 200, 200)" stroke-width="3" stroke-linecap="square" />
+                                </svg>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- parent(5) ends -->
+                </div>
+                <!-- #sideBarContent ends -->
+            </div>
+            <!-- #sidebar-wrapper ends -->
+
+
+            <!-- Main contents start here -->
+
+            <section class="container-fluid">
+                <div class="row">
+
+                    <!-- Map starts -->
+                    <div class="col-sm-10 col-sm-offset-1 col-md-7 col-md-offset-0 col-md-push-5 col-lg-7 col-lg-offset-0 col-lg-push-5">
+                        <div id="mapContents">
+                            <div id="mapContainer">
+                                <!-- Map comes here -->
+                            </div>
+
+                            <!--Other elements on the map (dropdown to choose county / RTP data, Basemap switcher) -->
+
+                            <!-- dropdown -->
+                            <div id="dropdown">
+                                <select name="countyselection" id="countyselection" onChange="zoomtocounty(this.options[this.options.selectedIndex].text)" tabindex="1">
+                                    <option value="1">All Counties</option>
+                                    <option value="2">Alameda</option>
+                                    <option value="3">Contra Costa</option>
+                                    <option value="4">Marin</option>
+                                    <option value="5">Napa</option>
+                                    <option value="6">San Francisco</option>
+                                    <option value="7">San Mateo</option>
+                                    <option value="8">Santa Clara</option>
+                                    <option value="9">Solano</option>
+                                    <option value="10" id="optionLast">Sonoma</option>
+                                </select>
+                            </div>
+
+                            <!-- RTP data, Basemap switcher -->
+                            <div id="layerControllerContainer">                       
+                                <div id="LC_outerWrapper" class="active">
+                                    <div id="RTPlayerController">                                   
+                                        <p id="RTPlayerControllerTitle">Project Layers</p>
+                                        <button type="button" id="tg-roadPricing" class="active layer-bm-control activeInitial"><span id="tg-roadPricing-icon"></span>
+                                            <label id="rp-label">Road Pricing</label>
+                                        </button>
+                                        <button type="button" id="tg-highway" class="active layer-bm-control activeInitial"><span id="tg-highway-icon"></span>
+                                            <label id="hw-label">Highway</label>
+                                        </button>
+                                        <button type="button" id="tg-transit" class="active layer-bm-control activeInitial"><span id="tg-transit-icon"></span>
+                                            <label id="tr-label">Transit</label>
+                                        </button>
+                                    </div>
+                                    <!-- #RTPlayerController ends -->
+
+                                    <div id="baseMapSwitcher">
+                                        <p id="baseMaplayerControlTitle">Basemap Layers</p>
+                                        <button type="button" id="tg-bayAreaFocus" class="active layer-bm-control activeInitial baseMapSwitcherGroup"><span id="tg-bayAreaFocus-icon"></span>
+                                            <label id="baf-label">Bay Area Focus</label>
+                                        </button>
+                                        <button type="button" id="tg-plain" class="layer-bm-control baseMapSwitcherGroup"><span id="tg-plain-icon"></span>
+                                            <label id="pl-label">Plain</label>
+                                        </button>
+                                        <button type="button" id="tg-street" class="layer-bm-control baseMapSwitcherGroup"><span id="tg-street-icon"></span>
+                                            <label id="st-label">Street</label>
+                                        </button>
+                                        <button type="button" id="tg-satellite" class="layer-bm-control baseMapSwitcherGroup"><span id="tg-satellite-icon"></span>
+                                            <label id="sat-label">Satellite</label>
+                                        </button>
+                                    </div>
+                                    <!-- #baseMapSwitcher ends -->
+                                </div>
+                                <!-- #LC_outerWrapper ends -->
+                                <div id="openClose_container"><span id="openClose" class="closeSwitch">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
+                            </div>
+                            <!-- #layerControllerContainer ends-->
+                        </div>
+                        <!-- #mapContents ends -->
+                    </div>
+                    <!-- #Map ends -->
+
+                    <!-- Info section (tab panel / photos) starts -->
+                    <div class="col-sm-10 col-sm-offset-1 col-md-5 col-md-offset-0 col-md-pull-7 col-lg-5 col-lg-offset-0 col-lg-pull-7" id="dataContainer">
+
+                        <!-- Content1 starts -->
+                        <div id="contents1" class="clearfix">
+
+                            <div id="tab">
+                               <!-- Tab panel titles -->
+                                <ul class="tablabel clearfix">
+                                    <li id="tabPanel1" class="active"><a href="#panel1" id="projectDesc"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="paneltitleText">Description</span></a>
+                                    </li>
+                                    <li id="tabPanel2"><a href="#panel2" id="projectInfo"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="paneltitleText">Information</span></a>
+                                    </li>
+                                    <li id="tabPanel3"><a href="#panel3" id="help"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="paneltitleText">Help</span></a>
+                                    </li>
+                                </ul>
+
+                                <!-- Each panel content -->
+                                <div class="panel">
+
+                                    <!-- Panel1: Project Description -->
+                                    <div id="panel1">
+                                        <div id="pNameContainer">
+                                            <div id="pName">No Project Selected</div>
+                                        </div>
+                                        <div id="pDescription">
+                                            <p id="pDescText">No Project Selected: Please use the map to select a project. Click on a colored point, line or area to view project information here.</p>
+                                        </div>
+                                    </div>
+                                    <!-- #panel1 ends -->
+
+                                    <!-- Panel2: Detailed Information -->
+                                    <div id="panel2">
+                                        <div class="infoContent">
+                                            <div class="infodetail" id="projectNameInfo">No Project Selected</div>
+                                        </div>
+                                        <div class="infoContent">
+                                            <div class="infotitle">County :</div>
+                                            <span class="infodetail" id="countyInfo">No Project Selected</span>
+                                        </div>
+                                        <div class="infoContent">
+                                            <div class="infotitle">Responsive Agency / CMA :</div>
+                                            <span class="infodetail" id="CMAInfo">No Project Selected</span>
+                                        </div>
+                                
+                                        <div id="costInfoContainer">
+                                            <div class="infotitle">Cost (Year of Expenditure Dollars) :</div>
+                                            <span class="infodetail" id="costInfo">Showing distribution of all major projects</span>
+                                            <div class="underline"></div>
+                                        </div>
+                                        <div id="costChartContainer">
+                                            <svg id="costChart"></svg>
+                                        </div>
+                                        <div id="timelineInfoContainer">
+                                            <div class="infotitle">Project Timeline :</div>
+                                            <span class="infodetail" id="phaseInfo">Showing distribution of all major projects</span>
+                                            <span id="phaseInfo2" class="infodetail"></span>
+                                            <div class="underline"></div>
+                                        </div>
+                                        <div id="timelineChartContainer">
+                                            <svg id="timelineChart"></svg>
+                                        </div>
+                                        <span class="notice">*Project start/completion defined by construction start/completion</span>
+                                    </div>
+                                    <!-- #panel2 ends -->
+
+                                    <!-- Panel3: Help/About -->
+                                    <div id="panel3">
+                                        <h3 id="helpTitle">How to use the Plan Bay Area interactive project map</h3>
+                                        <dl class="accordion">
+                                        
+    										<dt>Step 1: Select Project Layer(s) & Base Map </dt>                 
+                                            <dd>
+                                                 <div class="helpContents">                                               
+                                                     <ul>
+    													 <li><strong>Project Layers:</strong> Select/Deselect the type of project(s) you want to view/hide by clicking on the type under Project Layers:&nbsp; <img src="images/helpTab/roadPricing_h.svg" />&nbsp;(Road Princing),&nbsp; <img src="images/helpTab/highway_h.svg" />&nbsp;(Highway), or&nbsp; <img src="images/helpTab/transit_h.svg" />&nbsp;(Transit) *All project layers are selected by default. Multiple Project Layers may be selected at a time.</li>
+    													 <li><strong>Basemap Layer:</strong> Select the Base Map you want to view:&nbsp; <img src="images/helpTab/SFBayFocus_h.svg" />&nbsp;(Bay Area Focus *default),&nbsp; <img src="images/helpTab/plain_h.svg" />&nbsp;(Plain),&nbsp; <img src="images/helpTab/street_h.svg" />&nbsp;(Street), or&nbsp; <img src="images/helpTab/satellite_h.svg" />&nbsp;(Satellite). Only one Base Map may be selected at a time.</li>
+                                                     </ul>
+                                                 </div>
+                                            </dd>
+                                            <!-- Step 1 ends -->
+                                            
+                                            <dt>Step 2: Zoom In/Out, Pan, Select Counties</dt>
+    										<dd>
+                                                <div class="helpContents">
+                            						<ul>
+                                                    	<li><strong>Zoom in | out:</strong> Click <img src="images/helpTab/zoomIn.svg" /> | <img src="images/helpTab/zoomOut.svg" /> &nbsp;(located on the top right of the map) to zoom in or out of the map.</li>
+                                                    	<li><strong>Pan:</strong> Left click and hold the map (or press and hold for touch screen users) to move the map in the direction where you want to view. *For touch screen users: swipe to the right to show the western map extent and swipe to the bottom to show the northern map extent.</li>
+                                                    	<li><strong>County Selection:</strong> Click the dropdown menu <img src="images/helpTab/dropdown.svg" /> &nbsp;(located on the top right of the map) to view projects by region or by county.</li>
+                                                    </ul>
+                                                </div>                                                                     
+                                            </dd>
+                                            <!-- Step 2 ends -->
+
+                                            <dt>Step 3: Find Projects on the Map</dt>
+                                            <dd>
+                                                <div class="helpContents">
+                                                    <p>Click on a project on the map (shown as colored points, lines or shaded areas) to view the project information on the left panel (Note: this information appears below the maps for smartphone users or for viewing on narrower windows.) </p>
+                                                </div>
+                                            </dd>
+                                            <!-- Step 3 ends -->
+
+                                            <dt>Step 4: Explore Advanced Control Features</dt>
+                                            <dd>
+                                                <div class="helpContents">
+                                                    <p><span id="desc">Click on Layer Options / Legend&nbsp;</span><i class="fa fa-list-ul fa-lg"></i>&nbsp;(located in the header, above the map) to open the side control panel showing more map display controls, options and the map legend.</p>
+                                                </div>
+                                            </dd>
+                                            <!-- Step 4 ends -->
+                                        </dl>
+                                        <!-- accordion ends-->
+                                    </div>
+                                    <!-- #panel3 ends -->
+                                </div>
+                                <!-- #panel ends -->
+                            </div>
+                            <!-- #tab ends -->
+                        </div>
+                        <!-- #contents1 ends -->
+
+                        <!-- Content2 starts -->
+                        <div id="contents2">
+                            <div id="picsContainer">
+                                <div id="gallery_container">
+                                    <p id="galleryTitle">Photo & Rendering Gallery</p>
+                                    <div id="photoGallaryThumb">
+
+                                        <div id="initialPhotoWindow" >
+                                            <div id="PhotoWindowContent">
+                                                <img id="placeHolderImages" src="images/NoProject.svg">
+                                            </div>
+                                        </div>
+                                        <!-- #initialPhotoWindow ends -->
+
+                                        <!-- photo containers -->
+                                        <div id="pics1Container" class="eaPicsContainer"></div>
+                                        <div id="pics2Container" class="eaPicsContainer"></div>
+                                        <div id="pics3Container" class="eaPicsContainer"></div>
+                                        <div id="pics4Container" class="eaPicsContainer"></div>
+                                        <div id="pics5Container" class="eaPicsContainer"></div>
+                                        <div id="pics6Container" class="eaPicsContainer"></div>
+                                        <div id="pics7Container" class="eaPicsContainer"></div>
+                                        <div id="pics8Container" class="eaPicsContainer"></div>
+                                        <div id="pics9Container" class="eaPicsContainer"></div>
+                                        <div id="pics10Container" class="eaPicsContainer"></div>
+                                    </div>
+                                    <!-- #photoGallaryThumb ends -->
+                                </div>
+                                <!-- #gallery_container ends -->
+                            </div>
+                            <!-- #picsContainer ends -->
+                        </div>
+                        <!-- #contents2 ends -->
+                    </div>
+                    <!-- #dataContainer ends -->
+                </div>
+                <!-- #row ends -->
+            </section>
+
+            <!-- Tooltip on the map -->
+            <div id="info"></div>
+
+        </div>
+        <!-- #wrapper ends-->
+
+        <!-- Main content ends -->
+
+
+        <!-- footer -->
+        <footer id="footer"></footer>
+
+        <!-- javaScript start -->
+
+        <!-- Bootstrap -->
+        <script src="js/lib/bootstrap.js" type="text/javascript"></script>
+        <!-- Map script -->
+        <script src="js/map.js" type="text/javascript"></script>
+        <!-- RTP data file -->
+        <script src="data/rtpdata.js" type="text/javascript"></script>
+
+        <!-- Main script -->
+        <script src="js/main.js" type="text/javascript"></script>
+
+        <!-- load RTP data -->
+        <script type="text/javascript">
+            //Map layers load function
+            $(document).ready(function () {
+                mpMapper.sfBayArea();　　
+            });
+        </script>
+
+        <!-- javaScript ends -->
+
+    </body>
+
+</html>
